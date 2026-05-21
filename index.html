@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mamu Lux Notes</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">N</div>
+        <div>
+          <h1>Notes</h1>
+          <p>ზღაპრები და პრომპტები</p>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <button class="primary-btn full" id="newStoryBtn">+ ახალი ზღაპარი</button>
+        <button class="ghost-btn full" id="newPromptBtn">+ ახალი პრომპტი</button>
+      </div>
+
+      <div class="sidebar-section">
+        <label class="small-label" for="searchInput">ძებნა</label>
+        <input id="searchInput" class="input" type="text" placeholder="მოძებნე ზღაპარი ან პრომპტი..." />
+      </div>
+
+      <div class="sidebar-section grow">
+        <div class="section-title">ზღაპრები</div>
+        <div id="storyList" class="list"></div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-title">მონაცემები</div>
+        <div class="sidebar-actions">
+          <button class="ghost-btn" id="exportBtn">Export</button>
+          <label class="ghost-btn import-label" for="importFile">Import</label>
+          <input id="importFile" type="file" accept="application/json" hidden />
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Mamu Lux Geo</p>
+          <h2 id="pageTitle">ზღაპრის სამუშაო სივრცე</h2>
+        </div>
+        <div class="topbar-actions">
+          <button class="ghost-btn" id="saveBtn">შენახვა</button>
+          <button class="danger-btn" id="deleteStoryBtn">ზღაპრის წაშლა</button>
+        </div>
+      </header>
+
+      <section class="layout-grid">
+        <div class="panel story-panel">
+          <div class="panel-head">
+            <div>
+              <h3>ზღაპარი</h3>
+              <p>დაამატე გვერდები, ტექსტი და ილუსტრაციის აღწერა.</p>
+            </div>
+            <button class="primary-btn" id="addPageBtn">+ გვერდი</button>
+          </div>
+
+          <div class="field-grid">
+            <label>
+              ზღაპრის სათაური
+              <input id="storyTitleInput" class="input" type="text" placeholder="მაგ: ლილუ ყინულის სასახლეში" />
+            </label>
+            <label>
+              სტატუსი
+              <select id="storyStatusInput" class="input">
+                <option value="დასაწერი">დასაწერი</option>
+                <option value="მზადდება">მზადდება</option>
+                <option value="ილუსტრაციები">ილუსტრაციები</option>
+                <option value="დასრულებულია">დასრულებულია</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="prompt-attach-box">
+            <div>
+              <strong>პრომპტის გავრცელება</strong>
+              <p>აირჩიე პრომპტი და მიამაგრე ყველა გვერდს ერთდროულად.</p>
+            </div>
+            <div class="attach-controls">
+              <select id="globalPromptSelect" class="input"></select>
+              <button class="primary-btn" id="applyPromptAllBtn">ყველა გვერდზე</button>
+            </div>
+          </div>
+
+          <div id="pagesContainer" class="pages"></div>
+        </div>
+
+        <div class="panel prompt-panel">
+          <div class="panel-head">
+            <div>
+              <h3>პრომპტები</h3>
+              <p>დააჯგუფე სტილები, პერსონაჟები და ტექნიკური ტექსტები.</p>
+            </div>
+          </div>
+
+          <div class="prompt-form">
+            <label>
+              ჯგუფი
+              <input id="promptGroupInput" class="input" type="text" placeholder="მაგ: ილუსტრაციის სტილი" />
+            </label>
+            <label>
+              სათაური
+              <input id="promptTitleInput" class="input" type="text" placeholder="მაგ: საბავშვო წიგნის სტილი" />
+            </label>
+            <label>
+              პრომპტი
+              <textarea id="promptTextInput" class="textarea" placeholder="ჩაწერე პრომპტი..."></textarea>
+            </label>
+            <button class="primary-btn full" id="savePromptBtn">პრომპტის დამატება</button>
+          </div>
+
+          <div id="promptList" class="prompt-list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast">დაკოპირდა</div>
+  <script src="script.js"></script>
+</body>
+</html>
